@@ -1,4 +1,4 @@
-@media (max-width: 767px) {
+@media (max-width: 639px) {
     #precisionSlider {
         grid-area: 1 / 1 / 2 / 3;
         place-self: center;

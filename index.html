@@ -18,7 +18,7 @@
         <h1 class="absolute left-auto top-0 text-[8vmin] p-2">Ennios Rückkehr in:</h1>
         <div id="output" class="text-[16vw]"></div>
         <div id="toolbar"
-            class="absolute bottom-0 p-4 h-max w-screen bg-black grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1 gap-4">
+            class="absolute bottom-0 p-4 h-max w-screen bg-black grid grid-cols-2 grid-rows-2 sm:grid-cols-3 sm:grid-rows-1 gap-4">
             <div id="prevButton"
                 class="p-2 flex border-2 border-white rounded-xl cursor-pointer flex justify-start place-self-start"
                 onclick="prevType()">
@@ -28,7 +28,7 @@
                 </svg>
                 <p class="text-white">previous</p>
             </div>
-            <div id="precisionSlider" class="p-2 flex border-2 border-white rounded-xl cursor-pointer">
+            <div id="precisionSlider" class="p-2 flex border-2 border-white rounded-xl cursor-pointer w-max">
                 <label for="precisionInput" class="text-white mr-2">Precision:</label>
                 <input type="range" name="precision slider" id="precisionInput" min="1" max="9" value="6"
                     onchange="updateFraction(1)">
