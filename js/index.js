@@ -11,7 +11,7 @@ const end = "6/1/23";
 let now = Date.now();
 let startDate = new Date(start);
 let endDate = new Date(end);
-let precision = 5;
+let precision = 1;
 let typeNumber = 1;
 let updateInterval;
 
