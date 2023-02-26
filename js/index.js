@@ -32,6 +32,7 @@ let precisionValue = precisionToValue.get(precision);
 let outputElement = document.getElementById("output");
 let precisionElement = document.getElementById("precisionSlider");
 let toolbarElement = document.getElementById("toolbar");
+let headingElement = document.getElementById("heading");
 //#endregion
 
 //#region functions
@@ -97,6 +98,21 @@ function stopInterval() {
         console.log("clearInterval");
         clearInterval(updateInterval);
     }
+}
+//#endregion
+
+//#region percentage calculations
+function calculatePercentage() {
+    now = Date.now();
+    let diff = getDifference(endDate.getTime(), startDate.getTime());
+    let nowStartDiff = getDifference(now, startDate.getTime());
+    return Math.floor((nowStartDiff / diff) * 100);
+}
+
+function updatePercentage() {
+    console.log("updatePercentage");
+    let outputElement = document.getElementById("output");
+    outputElement.innerHTML = calculatePercentage() + "%";
 }
 //#endregion
 
@@ -188,46 +204,61 @@ let outputTypes = new Map([
     [
         1,
         {
-            type: "fraction",
-            func: updateFraction,
-            fontSize: "text-[16vw]",
-            precision: true,
+            type: "percentage",
+            func: updatePercentage,
+            fontSize: "text-[24vw]",
+            precision: false,
+            title: "Zeit vorbei:",
         },
     ],
     [
         2,
         {
-            type: "countdown",
-            func: updateCountdown,
-            fontSize: "text-[10vw]",
-            precision: false,
+            type: "fraction",
+            func: updateFraction,
+            fontSize: "text-[16vw]",
+            precision: true,
+            title: "Zeit vorbei:",
         },
     ],
     [
         3,
         {
-            type: "seconds",
-            func: updateSeconds,
+            type: "countdown",
+            func: updateCountdown,
             fontSize: "text-[10vw]",
             precision: false,
+            title: "Ennios rückkehr in:",
         },
     ],
     [
         4,
         {
-            type: "hours",
-            func: updateHours,
+            type: "seconds",
+            func: updateSeconds,
             fontSize: "text-[10vw]",
             precision: false,
+            title: "Ennios rückkehr in:",
         },
     ],
     [
         5,
         {
+            type: "hours",
+            func: updateHours,
+            fontSize: "text-[10vw]",
+            precision: false,
+            title: "Ennios rückkehr in:",
+        },
+    ],
+    [
+        6,
+        {
             type: "days",
             func: updateDays,
             fontSize: "text-[10vw]",
             precision: false,
+            title: "Ennios rückkehr in:",
         },
     ],
 ]);
@@ -253,6 +284,7 @@ function changeType(type) {
         toolbarElement.classList.remove("sm:grid-cols-3");
         toolbarElement.classList.add("sm:grid-cols-2");
     }
+    headingElement.innerHTML = outputTypes.get(type).title;
     startInterval(outputTypes.get(type).func);
 }
 
