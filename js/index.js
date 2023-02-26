@@ -244,10 +244,14 @@ function changeType(type) {
         precisionElement.classList.remove("hidden");
         toolbarElement.classList.add("grid-rows-2");
         toolbarElement.classList.remove("grid-rows-1");
+        toolbarElement.classList.add("sm:grid-cols-3");
+        toolbarElement.classList.remove("sm:grid-cols-2");
     } else {
         precisionElement.classList.add("hidden");
         toolbarElement.classList.remove("grid-rows-2");
         toolbarElement.classList.add("grid-rows-1");
+        toolbarElement.classList.remove("sm:grid-cols-3");
+        toolbarElement.classList.add("sm:grid-cols-2");
     }
     startInterval(outputTypes.get(type).func);
 }
